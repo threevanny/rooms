@@ -4,11 +4,60 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rooms</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'stylesheets/bulma/css/bulma.min.css' %}">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <title>Rooms | The place where you belong</title>
 </head>
 <body>
-  <h1>Rooms</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi sapiente aliquam alias, nemo fugit hic doloribus accusamus ratione repudiandae totam sequi. Mollitia dignissimos aperiam explicabo quasi laudantium eum commodi est!</p>
+  <section class="hero is-info is-fullheight">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+            </a>
+            <span class="navbar-burger" data-target="navbarMenuHeroB">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenuHeroB" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item">
+                Home
+              </a>
+              <a class="navbar-item">
+                Explore
+              </a>
+              <a class="navbar-item">
+                About
+              </a>
+              <span class="navbar-item">
+                <a class="button is-info is-inverted">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Login</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <main class="content">
+          <h1 class="title is-1">Create an place where you belong</h1>
+          <p class="subtitle is-6">From gaming, to music, to learning, there's a place for you.</p>
+        </main>
+      </div>
+    </div>
+  </section>
   
 </body>
 </html>
