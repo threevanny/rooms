@@ -26,17 +26,20 @@
           </div>
           <div id="navbarMenuHeroB" class="navbar-menu">
             <div class="navbar-end">
-              <a class="navbar-item">
+              <a class="navbar-item" href="{% url 'home' %}">
                 Home
               </a>
-              <a class="navbar-item">
+              <a class="navbar-item" href="/admin">
+                Admin
+              </a>
+              <a class="navbar-item" href="{% url 'explore' %}">
                 Explore
               </a>
-              <a class="navbar-item">
-                About
+              <a class="navbar-item" href="{% url 'room' %}">
+                Room
               </a>
               <span class="navbar-item">
-                <a class="button is-info is-inverted">
+                <a class="button is-info is-inverted" href="{% url 'login' %}">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
@@ -52,7 +55,7 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <main class="content">
-          <h1 class="title is-1">Create an place where you belong</h1>
+          <h1 class="title is-1">Find or create the place where you belong</h1>
           <p class="subtitle is-6">From gaming, to music, to learning, there's a place for you.</p>
         </main>
       </div>
