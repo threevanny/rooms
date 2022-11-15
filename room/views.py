@@ -1,25 +1,33 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignupUserForm
+from .models import Room, User, Profile
 
 
 # Create your views here.
 
 def home(request):
+    if request.user.is_authenticated:
+        return redirect('explore')
     return render(request, 'room/home.html')
 
 def explore(request):
     return render(request, 'room/explore.html')
 
-def room(request):
-    return render(request, 'room/room.html')
+def room(request, room_id):
+    room = get_object_or_404(Room, pk=room_id)
+    return render(request, 'room/room.html', {'room': room })
 
-def user(request):
-    return render(request, 'room/user.html')
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(Profile, id_user=user.id)
+    # get rooms of user where status is public
+    #rooms = Room.objects.filter(id_user=user.id, status='public')
+    return render(request, 'room/profile.html', { 'user_': user , 'profile': profile, })
 
 def signin(request):
     if request.user.is_authenticated:
-        return redirect('room')
+        return redirect('explore')
     
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -27,7 +35,7 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('room')
+            return redirect('explore')
         else:
             return redirect('login')
     else:
@@ -38,6 +46,9 @@ def signout(request):
     return redirect('home')
 
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('explore')
+    
     if request.method == 'POST':
         form = SignupUserForm(request.POST)
         if form.is_valid():
@@ -48,6 +59,8 @@ def signup(request):
             username = form.cleaned_data.get('username')
             password1 = form.cleaned_data.get('password1')
             password2 = form.cleaned_data.get('password2')
+
+            # if profile not exist then create new profile
 
             user = authenticate(request, username=username, password=password1)
             login(request, user)

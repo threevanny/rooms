@@ -1,0 +1,22 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="columns">
+    <div class="column is-one-quarter">
+      <figure class="image is-128x128">
+        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+      </figure>
+      <h1 class="title is-4 mt-5">{{ user_.first_name }} {{ user_.last_name }}</h1>
+      <p><small><a href="/{{user_.username}}">@{{ user_.username }}</a></small></p>
+      <p>{{ profile.bio }}</p>
+      <p>{{ profile.country }}</p>
+      <p><small class="">{{ user_.date_joined|date:"M d, Y" }}</small></p>
+    </div>
+    <div class="column">
+      Public Rooms
+    </div>
+  </div>
+</div>
+
+{% endblock %}
